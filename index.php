@@ -19,6 +19,8 @@ if(!function_exists('add_action')){
 //Includes
 //Include the activation.php so we can use our custom functions in this file
 include('includes/activate.php');
+//Include init.php 
+include('includes/init.php');
 
 
 //Hooks
@@ -27,6 +29,8 @@ include('includes/activate.php');
 //Php constant __FILE__ will allways return the path of file where it is used. So in our case it will reutrn the path to the plugin
 //Second parametar is the custom funciton
 register_activation_hook(__FILE__, 'r_activate_plugin');
+//This hook is trigered when WP begins to inicialize the data for curent page
+add_action('init','recipe_init');
 
 
 //Shortcodes
