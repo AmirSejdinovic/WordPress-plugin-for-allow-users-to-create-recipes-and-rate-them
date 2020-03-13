@@ -21,6 +21,8 @@ if(!function_exists('add_action')){
 include('includes/activate.php');
 //Include init.php 
 include('includes/init.php');
+//Include the save-post.php
+include('process/save-post.php');
 
 
 //Hooks
@@ -31,6 +33,10 @@ include('includes/init.php');
 register_activation_hook(__FILE__, 'r_activate_plugin');
 //This hook is trigered when WP begins to inicialize the data for curent page
 add_action('init','recipe_init');
+//This hook is trigered when the post was saved. The _recipe will tell WP to do this action only when saving the custom post type with name of receipe
+//The third parameter of the action hoock is priorty
+//Forth parameter is the nubmer of arguments in the custom function
+add_action('save_post_recipe', 'r_save_post_admin', 10, 3);
 
 
 //Shortcodes
