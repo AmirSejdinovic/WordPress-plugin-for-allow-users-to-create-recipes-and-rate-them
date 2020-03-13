@@ -23,6 +23,8 @@ include('includes/activate.php');
 include('includes/init.php');
 //Include the save-post.php
 include('process/save-post.php');
+//Includde the filter-content.php
+include('process/filter-content.php');
 
 
 //Hooks
@@ -37,6 +39,9 @@ add_action('init','recipe_init');
 //The third parameter of the action hoock is priorty
 //Forth parameter is the nubmer of arguments in the custom function
 add_action('save_post_recipe', 'r_save_post_admin', 10, 3);
+//Filter hoock with hoock the_content this hoock is trigeded when the content loads
+add_filter('the_content', 'r_filter_recipe_contant');
+
 
 
 //Shortcodes
