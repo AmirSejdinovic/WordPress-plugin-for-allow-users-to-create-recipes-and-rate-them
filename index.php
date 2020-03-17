@@ -14,6 +14,8 @@ if(!function_exists('add_action')){
 }
 
 //Setup
+//Define constant called RECIPE_PLUGIN_UIRL and set to the __FILE__ PHP variable. This will be helpful for referencing the plugin file when we enqueue our files
+define('RECIPE_PLUGIN_URL', __FILE__);
 
 
 //Includes
@@ -25,6 +27,11 @@ include('includes/init.php');
 include('process/save-post.php');
 //Includde the filter-content.php
 include('process/filter-content.php');
+//Include the enqueue.php
+include('includes/enqueue.php');
+//include rate-recipe.php
+include('process/rate-recipe.php');
+
 
 
 //Hooks
@@ -41,6 +48,10 @@ add_action('init','recipe_init');
 add_action('save_post_recipe', 'r_save_post_admin', 10, 3);
 //Filter hoock with hoock the_content this hoock is trigeded when the content loads
 add_filter('the_content', 'r_filter_recipe_contant');
+//Incude rateit.js in plugin
+add_action('wp_enqueue_scripts', 'r_enqueue_scripts',100);
+add_action('wp_ajax_r_rate_recipe', 'r_rate_recipe');
+add_action('wp_ajax_nopriv_r_rate_recipe', 'r_rate_recipe');
 
 
 

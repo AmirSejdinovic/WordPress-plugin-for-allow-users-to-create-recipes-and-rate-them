@@ -13,6 +13,7 @@ function r_filter_recipe_contant( $content){
   //This variable store the html markup which is in the file recipe-template.php. With function file_get_contents() we include the recipe-template.php file
    $recipe_html = file_get_contents('recipe-template.php', true);
    $recipe_html = str_replace('RATE_I18N', __("Rating", "recipe"), $recipe_html);
+   $recipe_html = str_replace('RECIPE_ID', $post->ID, $recipe_html);
 
   return $recipe_html . $content;
    
